@@ -4,8 +4,8 @@ In an image retrieval task, there are two fundamental units: image repository, a
 
 ![Image retrieval](/assests/img_retrieval.png)
 
-Here I will demonstarte two differen ways of trainnig an unsupervised 
-In this project, I will demonstrate the image retrieval problem from an unsupervised perspective. The foundation of the work lies in the latent space representation of the images learned through a self-supervised learning task. The goal here is to capture the latent space embeddings of images and then try to determine the distance among them in the latent space. Then we identify the issues in learning in a purely unsupervised scenario (link) and show the enhancement in the information content of the learned representations with a hint of supervision. We train a regularised autoencoder with the supervised information. We validate the performance in a retrieval framework for the test set.
+ 
+In this project, I will demonstrate the image retrieval problem from an unsupervised perspective. The foundation of the work lies in the latent space representation of the images learned through a self-supervised learning task. The goal here is to capture the latent space embeddings of images and then try to determine the distance among them in the latent space. Then I identify the issues in learning in a purely unsupervised scenario and show the enhancement in the information content of the learned representations with a supervision head. I train a regularised autoencoder with the supervised information. We validate the performance in a retrieval framework for the test set.
 
 Training data used: [CIFAR 10](https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz)
 
@@ -48,7 +48,7 @@ Reconstruction of Test images:
 
 
 ### Method2:
-In this method, the autoencoder remains the same. That is to say, the architecture and the configuration are the same. The only change that is made is an addition of a classification head to the bottleneck.
+In this method, the autoencoder remains the same. That is to say, the architecture and the configuration are the same. The only change that is made is an addition of a classification head to the bottleneck(end of encoder).
 
 Test Images:
 ![](/assests/reconstruction2.png)
@@ -56,7 +56,7 @@ Test Images:
 Reconstruction of Test images:
 ![](/assests/reconstruction2_res.png)
 
-The reconstructions are not that good as with a vanilla autoencoder. This means that the classification head is interfering with the embeddings. Come to think of it, both the objectives (reconstruction and classification) are fighting against each other in the process. This leads to a more inferior reconstruction but a better latent space alignment, as is shown later in the report.
+The reconstructions are not that good as with a vanilla autoencoder. This means that the classification head is interfering with the embeddings. Come to think of it, both the objectives (reconstruction and classification) are fighting against each other in the process. This leads to a more inferior reconstruction but a better latent space alignment, as is shown below in the report.
 
 
 ![tsne](/assests/tsne2.png)
